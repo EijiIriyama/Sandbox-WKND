@@ -1,0 +1,27 @@
+name: Push to Adobe Cloud Manager develop Branch
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Clone to Cloud Manager
+        env:
+          GITCM_USER_NAME: ${{ secrets.GIT_CM_USERNAME }}
+          GITCM_CLONE_CREDENTIALS: ${{ secrets.GIT_CM_PASSWORD }}
+          GITCM_CLONE_URL: "@git.cloudmanager.adobe.com/ags1665/SandboxWKND-p107220-uk06254/
+          GITCM_CLONE_BRANCH: "main"
+        run: |
+          git fetch --prune --unshallow
+          git remote add adobecm https://git.cloudmanager.adobe.com/ags1665/SandboxWKND-p107220-uk06254/
+          git push -f https://$GITCM_USER_NAME:$GITCM_CLONE_CREDENTIALS$GITCM_CLONE_URL HEAD:$GITCM_CLONE_BRANCH
