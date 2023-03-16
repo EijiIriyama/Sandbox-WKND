@@ -2,7 +2,7 @@ name: Push to Adobe Cloud Manager develop Branch
 
 on:
   push:
-    branches: [ main ]
+    branches: [ adobe-main ]
 
 jobs:
   build:
