@@ -19,7 +19,7 @@ jobs:
         env:
           GITCM_USER_NAME: ${{ secrets.GIT_CM_USERNAME }}
           GITCM_CLONE_CREDENTIALS: ${{ secrets.GIT_CM_PASSWORD }}
-          GITCM_CLONE_URL: "@git.cloudmanager.adobe.com/ags1665/SandboxWKND-p107220-uk06254/
+          GITCM_CLONE_URL: "@git.cloudmanager.adobe.com/ags1665/SandboxWKND-p107220-uk06254/"
           GITCM_CLONE_BRANCH: "main"
         run: |
           git fetch --prune --unshallow
